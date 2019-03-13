@@ -13,12 +13,11 @@ def create_app(test_config=None):
     else:
         app.config.from_mapping(test_config)
 
-    @app.route('/')
-    def hello():
-        return "Hello, World!"
+    from . import inputForm
+    app.register_blueprint(inputForm.bp)
 
-    from . import redirect
-    app.register_blueprint(redirect.bp)
+    from . import forwardToDestination
+    app.register_blueprint(forwardToDestination.bp)
 
     return app
 

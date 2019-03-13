@@ -1,0 +1,6 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>Generated Url</h1>
+    <a href="{{ request.url_root }}re/{{ request.args['generated_path'] }}">{{ request.url_root }}re/{{ request.args['generated_path'] }}</a>
+{% endblock %}
