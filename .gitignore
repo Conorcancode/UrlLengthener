@@ -1,6 +1,6 @@
 /.vscode
 /venv
 /tests
-/__pycache
+/__pycache__
 /.pytest_cache
 config.py
