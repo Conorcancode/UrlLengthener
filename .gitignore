@@ -3,4 +3,5 @@
 /tests
 /__pycache__
 /.pytest_cache
+/UrlLengthener/__pycache__
 config.py
