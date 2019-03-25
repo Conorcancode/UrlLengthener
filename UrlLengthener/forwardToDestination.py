@@ -4,7 +4,7 @@ from flask import (
 
 from . import db
 
-bp = Blueprint('forwardToDestination', __name__, url_prefix='/re')
+bp = Blueprint('forwardToDestination', __name__, url_prefix='/api/shorturl')
 
 @bp.route('/<urlCode>')
 def re(urlCode):

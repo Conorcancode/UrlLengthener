@@ -17,7 +17,7 @@ def create_app(test_config=None):
     app.register_blueprint(inputForm.bp)
 
     from . import forwardToDestination
-    app.register_blueprint(forwardToDestination.bp)
+    app.register_blueprint(forwardToDestination.bp, url_prefix='/api/shorturl/')
 
     return app
 

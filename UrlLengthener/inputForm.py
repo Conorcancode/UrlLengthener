@@ -1,5 +1,5 @@
 from flask import (
-    Blueprint, render_template, request, flash, redirect, url_for
+    Blueprint, render_template, request, flash, redirect, url_for, jsonify
 )
 from . import db
 
@@ -9,7 +9,7 @@ bp = Blueprint('inputForm', __name__, url_prefix='/')
 def submitURL():
     if request.method == 'POST':
         destination = request.form['destination']
-
+        redirectURL = request.url_root + 'api/shorturl/'
         identical_destinations = db.getRowByDestination(destination)
         error = None
 
@@ -18,18 +18,14 @@ def submitURL():
         elif identical_destinations == 'Cannot connect to Database':
             error = 'Cannot connect to Database'
         elif type(identical_destinations) is list and len(identical_destinations) > 0:
-            error = 'Redirect already exists'
+            redirectURL += identical_destinations[0][0]
+            return jsonify(original_url=destination, short_url=redirectURL)
         
         if error is None:
             db.getNewUrl(destination)
-            forwardURL = db.getRowByDestination(destination)[0][0]
-            return redirect(url_for('inputForm.result', generated_path = forwardURL))
+            forwardURL = redirectURL + db.getRowByDestination(destination)[0][0]
+            return jsonify(original_url=destination, short_url=forwardURL)
         
         flash(error)
     
     return render_template('index.html')
-
-@bp.route('/result')
-def result():
-
-    return render_template('result.html')
