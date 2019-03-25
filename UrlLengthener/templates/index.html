@@ -2,7 +2,7 @@
     {% block content %}
         <h1>Insert your url, get a longer one!</h1>
 
-        <form method="post">
+        <form method="post" action="{{url_for('forwardToDestination.displayJSON')}}">
             <label for="destination">URL</label>
             <input name="destination" id="destination" required>
             <input type="submit" value="Shorten">
