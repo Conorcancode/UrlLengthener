@@ -1,0 +1,37 @@
+.flash, .error-message{
+    background-color: #FF8B73;
+    text-align: center;
+}
+
+body{
+    background-color: rgb(245,245,245);
+}
+
+h1{
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 2.25em;
+}
+
+.input-form{
+    display: flex;
+    flex-direction: column;
+    max-width: 1024px;
+    margin: auto;
+    padding: 0 10px;
+    label{
+        font-size: 2em;
+        font-family: sans-serif;
+        margin-bottom: 10px;
+    }
+
+    .url-input{
+        font-size: 1.75em;
+    }
+
+    .submit-button{
+        margin-top: 10px;
+        font-size: 1.5em;
+        font-family: sans-serif;
+    }
+}
