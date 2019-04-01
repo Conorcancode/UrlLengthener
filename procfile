@@ -1,0 +1,2 @@
+web: gunicorn app:UrlLengthener
+release: python manage.py generate

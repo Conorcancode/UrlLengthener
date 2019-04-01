@@ -4,10 +4,18 @@ from . import randomURL
 
 def connect():
     try:
-        return psycopg2.connect("dbname='UrlLongTest' host='localhost' user='postgres' password=%s" % config.DEV_DB_PW)
+        return psycopg2.connect("dbname='%s' host=%s user='%s' password=%s" % (config.DATABASE_NAME, config.DATABASE_URL, config.DATABASE_USER, config.DATABASE_PASSWORD))
     except:
         return 'Cannot connect to Database'
     
+
+def db_init():
+    conn=connect()
+    cur = conn.cursor()
+    cur.execute("CREATE TABLE urls (ID serial PRIMARY KEY, generated_url VARCHAR(255) NOT NULL, destination_url VARCHAR(255) NOT NULL);")
+    conn.commit()
+    cur.close()
+    conn.close()
 
 def getNewUrl(destination):
     generated = randomURL.generate()
