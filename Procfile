@@ -1,0 +1,1 @@
+web: gunicorn "UrlLengthener:create_app()"
