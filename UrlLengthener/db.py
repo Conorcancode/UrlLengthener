@@ -1,5 +1,5 @@
 import psycopg2
-import config
+# import config
 from . import randomURL
 
 def connect():
