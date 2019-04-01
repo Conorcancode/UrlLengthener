@@ -4,7 +4,7 @@ from . import randomURL
 
 def connect():
     try:
-        return psycopg2.connect("dbname='%s' host=%s user='%s' password=%s" % (config.DATABASE_NAME, config.DATABASE_URL, config.DATABASE_USER, config.DATABASE_PASSWORD))
+        return psycopg2.connect("dbname='%s' host=%s" % ('urls', os.environ['DATABASE_URL']), sslmode='require')
     except:
         return 'Cannot connect to Database'
     
